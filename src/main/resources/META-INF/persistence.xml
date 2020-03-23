@@ -14,6 +14,7 @@
             <!-- 옵션 -->
             <property name="hibernate.show_sql" value="true"/> <!--디비 쿼리 나가는거 볼지말지-->
             <property name="hibernate.format_sql" value="true"/> <!-- 이쁘게 포맷팅 -->
+            <!--<property name="hibernate.jdbc.batch_size" value="10"/> size 만큼 모았다가 한번에 쓰기지연 저장 쿼리 한번에 날림 -->
             <!--
                insert
            into
