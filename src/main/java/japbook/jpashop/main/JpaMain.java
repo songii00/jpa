@@ -1,11 +1,12 @@
-package hellojpa;
+package japbook.jpashop.main;
+
+import japbook.jpashop.domain.Member;
+import japbook.jpashop.domain.Order;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.Arrays;
-import java.util.List;
 
 public class JpaMain {
 
@@ -22,12 +23,8 @@ public class JpaMain {
         transaction.begin();
 
         try{
-
-            Member member = new Member();
-            member.setId(2L);
-            member.setRoleType(RoleType.ADMIN);
-
-            entityManager.persist(member);
+            Order order = entityManager.find(Order.class, 1L);
+            Member member = order.getMember();
             transaction.commit();
 
         }catch (Exception e){

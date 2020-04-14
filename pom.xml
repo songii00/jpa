@@ -41,3 +41,4 @@
 </project>
 
 <!-- jdbc:h2:tcp://localhost/~/test-->
+<!-- jdbc:h2:tcp://localhost/~/jpashop -->
