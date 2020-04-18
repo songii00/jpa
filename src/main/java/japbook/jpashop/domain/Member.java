@@ -1,6 +1,9 @@
 package japbook.jpashop.domain;
 
 import javax.persistence.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class
@@ -19,6 +22,9 @@ Member {
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
     private Team team;
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -49,5 +55,13 @@ Member {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }
