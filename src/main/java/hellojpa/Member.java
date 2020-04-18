@@ -5,7 +5,9 @@ package hellojpa;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 // 테이블 명
 @Entity
@@ -40,11 +42,21 @@ public class Member {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastModifiedDate;
 
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
+
     @Lob //varchar를 넘어서는 큰 컨텐츠
     private String description;
 
     @Transient // db와는 관련 없는 메모리에서 사용되는 변수 정의시 사용
     private String temp;
+
+   // @ManyToMany
+   // @JoinTable(name = "MEMBER_PRODUCT")
+   // private List<Product> products = new ArrayList<>();
+    @OneToMany(mappedBy = "member")
+    private List<MemberProduct> memberProducts = new ArrayList<>();
 
     private LocalDate testLocalDate; // date 로 맵핑
     private LocalDateTime testLocalDatetime; // timestamp 로 맵핑
